@@ -1,14 +1,47 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml" lang="EN">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml" lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Game rent Homepage</title>
+    <title>Game Rent - Home</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        h1 {
+            color: #333;
+        }
+        .role-section {
+            margin: 20px 0;
+        }
+        a {
+            color: #0066cc;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
 </head>
 <body>
-<h1>Welcome to Game rent</h1>
-<div sec:authorize="hasRole('USER')">Text visible to user.</div>
-<div sec:authorize="hasRole('ADMIN')">Text visible to admin.</div>
-<p th:text="'Hello, ' + ${username} + '!'"></p>
-<a th:href="@{/logout}">Click here to logout</a>
+    <h1>Welcome to Game Rent</h1>
+
+    <!-- Greeting the user -->
+    <p th:text="'Hello, ' + ${username} + '!'"></p>
+
+    <!-- Role-based content -->
+    <div class="role-section">
+        <div sec:authorize="hasRole('USER')">
+            <p>Welcome, valued user! You can explore and rent your favorite games here.</p>
+        </div>
+        <div sec:authorize="hasRole('ADMIN')">
+            <p>Welcome, admin! Manage users and games through the admin panel.</p>
+        </div>
+    </div>
+
+    <!-- Links -->
+    <p>
+        <a th:href="@{/favorites?userId=1}">View Your Favorites</a> | 
+        <a th:href="@{/logout}">Logout</a>
+    </p>
 </body>
 </html>
