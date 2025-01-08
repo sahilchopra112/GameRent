@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<<<<<<< Updated upstream
 <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml" lang="en">
 <head>
     <meta charset="UTF-8">
@@ -43,5 +44,18 @@
         <a th:href="@{/favorites?userId=1}">View Your Favorites</a> | 
         <a th:href="@{/logout}">Logout</a>
     </p>
+=======
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Game Rent - Home</title>
+    <link rel="stylesheet" th:href="@{/styles.css}">
+</head>
+<body>
+    <h1>Welcome to Game Rent</h1>
+    <p>Hello, <span th:text="${username}">User</span>!</p>
+
+    <a href="/favorites?userId=1">View Favorites</a> |
+    <a href="/logout">Logout</a>
+>>>>>>> Stashed changes
 </body>
 </html>
