@@ -13,7 +13,11 @@ public class FavoriteService {
     @Autowired
     private FavoriteRepository favoriteRepository;
 
+<<<<<<< Updated upstream
     public List<Favorite> getFavorites(Long userId) {
+=======
+    public List<Favorite> getFavoritesByUserId(Long userId) {
+>>>>>>> Stashed changes
         return favoriteRepository.findByUserId(userId);
     }
 
@@ -21,6 +25,10 @@ public class FavoriteService {
         Favorite favorite = new Favorite();
         favorite.setUserId(userId);
         favorite.setGameId(gameId);
+<<<<<<< Updated upstream
+=======
+        favorite.setFavoritedAt(java.time.LocalDateTime.now());
+>>>>>>> Stashed changes
         return favoriteRepository.save(favorite);
     }
 
