@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<<<<<<< Updated upstream
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Favorites</title>
@@ -27,5 +28,77 @@
         </tbody>
     </table>
     <a href="/home">Back to Home</a>
+=======
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Favorites</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #1e1e2c;
+      color: white;
+      text-align: center;
+    }
+    .favorites-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      padding: 20px;
+    }
+    .favorite-card {
+      background-color: #252538;
+      border-radius: 10px;
+      padding: 20px;
+      width: 200px;
+      text-align: left;
+      box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+    }
+    .favorite-card h3 {
+      margin: 0;
+      font-size: 18px;
+    }
+    .favorite-card p {
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Favorites</h1>
+  <div id="favorites-list" class="favorites-container"></div>
+
+  <script>
+    // Fetch data from the backend
+    fetch('http://localhost:8080/favorites?userId=1')
+      .then(response => response.json())
+      .then(data => {
+        const favoritesList = document.getElementById('favorites-list');
+        if (data.length === 0) {
+          favoritesList.innerHTML = '<p>No favorites found.</p>';
+          return;
+        }
+
+        data.forEach(favorite => {
+          const card = document.createElement('div');
+          card.className = 'favorite-card';
+          card.innerHTML = `
+            <h3>${favorite.title}</h3>
+            <p><strong>Genre:</strong> ${favorite.genre}</p>
+            <p><strong>Platform:</strong> ${favorite.platform}</p>
+            <p><strong>Price Per Day:</strong> $${favorite.pricePerDay}</p>
+            <p><strong>Release Date:</strong> ${favorite.releaseDate}</p>
+          `;
+          favoritesList.appendChild(card);
+        });
+      })
+      .catch(error => {
+        console.error('Error fetching favorites:', error);
+        const favoritesList = document.getElementById('favorites-list');
+        favoritesList.innerHTML = '<p>Error loading favorites. Please try again later.</p>';
+      });
+  </script>
+>>>>>>> Stashed changes
 </body>
 </html>
